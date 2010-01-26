@@ -1,0 +1,8 @@
+require 'test/unit'
+require 'src/rubyxr'
+
+class RubyxrTest < Test::Unit::TestCase
+  def test_file_name_from_stack_trace
+    assert_equal("test", Rubyxr.directory("test/test.rb:8in `test_local_file`"))
+  end
+end

@@ -1,0 +1,2 @@
+class LocalFile
+end
