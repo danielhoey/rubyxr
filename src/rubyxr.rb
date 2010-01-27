@@ -15,3 +15,5 @@ module Rubyxr
     File.dirname(stack_trace_entry.match(/(.*):\d/)[1])
   end
 end
+
+
