@@ -3,7 +3,6 @@ module Kernel
   def requirex(file_path)
     case file_path
     when /^\.\//
-      puts "local file (#{file_path})"
       require file_path.gsub(/^\./, Rubyxr.directory(caller[0]))
     else
       require file_path
