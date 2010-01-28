@@ -4,6 +4,8 @@ module Kernel
     case file_path
     when /^\.\//
       require file_path.gsub(/^\./, Rubyxr.directory(caller[0]))
+    when /^\.\.\//
+      require file_path.gsub(/^/, "#{Rubyxr.directory(caller[0])}/")
     else
       require file_path
     end

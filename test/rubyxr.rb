@@ -10,5 +10,11 @@ class RubyxrTest < Test::Unit::TestCase
     requirex './local_file'
     assert Object.const_defined?(:LocalFile)
   end
+  
+  def test_relative_file
+    create_file('../relative_file.rb', 'class RelativeFile; end')
+    requirex '../relative_file'
+    assert Object.const_defined?(:RelativeFile)
+  end
 end
 
