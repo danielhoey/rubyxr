@@ -5,4 +5,9 @@ class RubyxrTest < Test::Unit::TestCase
   def test_file_name_from_stack_trace
     assert_equal("test", Rubyxr.directory("test/test.rb:8in `test_local_file`"))
   end
+
+  def test_find_dir_containing
+    assert_equal('src/..', Rubyxr.find_dir_containing('README', File.dirname(__FILE__)))
+    assert_equal('src', Rubyxr.find_dir_containing(File.basename(__FILE__), File.dirname(__FILE__)))
+  end
 end
