@@ -7,7 +7,12 @@ class RubyxrTest < Test::Unit::TestCase
   end
 
   def test_find_dir_containing
-    assert_equal('src/..', Rubyxr.find_dir_containing('README', File.dirname(__FILE__)))
-    assert_equal('src', Rubyxr.find_dir_containing(File.basename(__FILE__), File.dirname(__FILE__)))
+    assert_file_path_equal('src/..', Rubyxr.find_dir_containing('README', File.dirname(__FILE__)))
+    assert_file_path_equal('src', Rubyxr.find_dir_containing(File.basename(__FILE__), File.dirname(__FILE__)))
+  end
+
+private
+  def assert_file_path_equal(expected, actual)
+    assert_equal(File.expand_path(expected), File.expand_path(actual))
   end
 end

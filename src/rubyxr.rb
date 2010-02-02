@@ -9,6 +9,8 @@ module Kernel
     else
       require "#{Rubyxr.project_root}/#{file_path}"
     end
+  rescue
+    raise Rubyxr::Exception.new("Rubyxr couldn't load #{file_path}: #{$!.message}") 
   end
 end
 
@@ -25,13 +27,16 @@ module Rubyxr
   def self.find_dir_containing(file, from_dir)
     from_dir =  File.expand_path(from_dir)
     if from_dir == "/"
-      return
+      raise "no #{file} found in directory tree"
     end
-    
+puts "find_dir_containing(#{file}, #{from_dir})"    
     if Dir["#{from_dir}/#{file}"].empty?
       find_dir_containing(file, "#{from_dir}/..")
     else
       from_dir
     end
+  end
+
+  class Exception < ::Exception
   end
 end

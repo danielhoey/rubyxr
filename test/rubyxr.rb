@@ -25,5 +25,10 @@ class RubyxrTest < Test::Unit::TestCase
     requirex './temp/temp_file'
     assert Object.const_defined?(:LocalFile)
   end
+
+  def test_path_with_no_project_root
+    assert_raises(Rubyxr::Exception) { requirex 'src/rubyxr' }
+  end
+
 end
 
