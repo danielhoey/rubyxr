@@ -2,5 +2,7 @@
 
 exit if ARGV.empty?
 
-require "#{File.dirname(__FILE__)}/../src/rubyxr"
+FILE = File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__
+
+require "#{File.dirname(FILE)}/../src/rubyxr"
 load ARGV.shift
