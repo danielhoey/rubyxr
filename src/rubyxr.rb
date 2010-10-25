@@ -29,7 +29,7 @@ module Rubyxr
     if from_dir == "/"
       raise "no #{file} found in directory tree"
     end
-puts "find_dir_containing(#{file}, #{from_dir})"    
+    
     if Dir["#{from_dir}/#{file}"].empty?
       find_dir_containing(file, "#{from_dir}/..")
     else
